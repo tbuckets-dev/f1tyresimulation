@@ -4,7 +4,7 @@ import tyre_model
 tyre = tyre_model.SimpleTyreModel()
 
 # Test the model
-slip_angle = 0.1
+slip_angle = 0.3
 slip_ratio = 0.2
 
 lateral_force = tyre.calculate_lateral_force(slip_angle)

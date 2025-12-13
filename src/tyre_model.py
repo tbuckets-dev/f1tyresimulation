@@ -8,7 +8,7 @@ class SimpleTyreModel:
         
     def calculate_lateral_force(self, slip_angle):
         # Simple linear model (Force = Stiffness * Slip)
-        return self.lateral_stiffness * slip_angle
+        return self.lateral_stiffness * slip_angle * (1 - abs(slip_angle/self.peak_slip_angle))
 
     def calculate_longitudinal_force(self, slip_ratio):
         # Simple linear model (Force = Stiffness * Slip)

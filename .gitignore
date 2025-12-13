@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.vscode/
+.idea/
+build/
+dist/
+src/tyre_model.pyc  # Example specific file to ignore (uncommon, usually directory based)
+.env
