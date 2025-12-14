@@ -9,3 +9,4 @@ build/
 dist/
 src/tyre_model.pyc  # Example specific file to ignore (uncommon, usually directory based)
 .env
+WARP.md
