@@ -7,9 +7,22 @@ class SimpleTyreModel:
         self.longitudinal_stiffness = longitudinal_stiffness
         self.peak_slip_angle = peak_slip_angle
         
-    def calculate_longitudinal_force(self, slip_ratio):
-        # Simple linear model (Force = Stiffness * Slip)
-        return self.longitudinal_stiffness * slip_ratio
+    def magic_formula_longitudinal_force(self, mu_s, mu_k, SR, V0):
+        """
+        Calculate the longitudinal force using the Magic Formula.
+        
+        Parameters:
+        - mu_s: Static friction peak
+        - mu_k: Kinematic friction
+        - SR: Slip Ratio (dimensionless)
+        - V0: Reference speed (in m/s)
+        
+        Returns:
+        - F_longitudinal: Longitudinal force (in Newtons)
+        """
+        F_longitudinal = mu_s * 9.81 * SR + mu_k * 9.81 * V0
+
+        return F_longitudinal
 
     def magic_formula_lateral_force(self, mu_s, mu_k, alpha_peak, alpha_zero, C, v):
         """
