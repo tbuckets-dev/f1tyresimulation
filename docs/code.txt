@@ -1,0 +1,47 @@
+import numpy as np
+
+def simplified_pacejka_fx(slip_ratio, Fz, coeffs):
+    """
+    Calculates the longitudinal force (Fx) using a simplified Pacejka Magic Formula.
+
+    Args:
+        slip_ratio (float): Longitudinal slip ratio (kappa, κ).
+        Fz (float): Vertical load on the tire (Newtons).
+        coeffs (dict): Dictionary of Magic Formula coefficients (B, C, D, E).
+
+    Returns:
+        float: Longitudinal force Fx (Newtons).
+    """
+    B = coeffs['B']
+    C = coeffs['C']
+    D = coeffs['D']
+    E = coeffs['E']
+
+    # The core Magic Formula equation: Y = D * sin(C * atan(B * X - E * (B * X - atan(B * X))))
+    # For longitudinal force, X is the slip ratio (kappa)
+    X = slip_ratio
+    
+    # Calculate the argument inside the sin function
+    # The term (B * X - atan(B * X)) handles the curvature adjustment
+    argument = B * X - E * (B * X - np.arctan(B * X))
+    
+    # Calculate the force (Fx)
+    # The result is scaled by the vertical load Fz
+    Fx = Fz * D * np.sin(C * np.arctan(argument))
+    
+    return Fx
+
+# Example usage:
+# These coefficients are illustrative and highly dependent on actual tire data
+tire_coeffs = {
+    'B': 10.0,  # Stiffness factor
+    'C': 1.6,   # Shape factor
+    'D': 1.0,   # Peak factor (often related to friction coefficient)
+    'E': 0.9    # Curvature factor
+}
+
+vertical_load = 4000 # Example vertical load in Newtons (approx ~400 kg)
+slip_value = 0.05    # Example slip ratio of 5%
+
+force = simplified_pacejka_fx(slip_value, vertical_load, tire_coeffs)
+print(f"Longitudinal Force (Fx) at {slip_value*100}% slip: {force:.2f} Newtons")
