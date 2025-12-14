@@ -1,9 +1,0 @@
-Typical tyre parameters for F1 tyres: (All values are based on optimal conditions)
-
-Static friction peak (mu_s): 1.4-1.7 (Normal tyres: 0.8-0.9)
-Kinematic friction (mu_k): 1.7-1.9 (Normal tyres: 0.7)
-Peak slip angle (alpha_peak): 4-8 degrees (Normal tyres: 5-10 degrees)
-Zero slip angle (alpha_zero): 2-4 degrees (Normal tyres: 5-10 degrees)
-Curvature factor (C): 100-200 (Normal tyres: 100-200)
-Slip Ratio (SR): 0.05-0.1 (Normal tyres: 0.1-0.25)
-Reference speed (V0): 50-100 m/s (Normal tyres: 30-50 m/s)
