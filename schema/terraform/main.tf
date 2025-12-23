@@ -44,6 +44,9 @@ resource "proxmox_vm_qemu" "tyre01" {
     ssh_private_key = var.ssh_private_key
     sshkeys = var.ssh_key
 
+    # Assign static IP for the VM/s
+    ipconfig0 = "ip=192.168.40.40/24,gw=192.168.40.1"
+
     # Set username and password for the VM
     ciuser = var.ciuser
     cipassword = var.cipassword
@@ -62,6 +65,14 @@ resource "proxmox_vm_qemu" "tyre01" {
         #Enables thin provisioning for better performance
         discard = true
         #Don't backup the VM
+        backup = false
+    }
+
+    # Cloud-init drive - keeps the cloud-init drive attached after VM creation
+    disk {
+        slot = "ide2"
+        type = "cloudinit"
+        storage = "local-lvm"
         backup = false
     }
 
