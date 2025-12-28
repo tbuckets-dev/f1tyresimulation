@@ -16,6 +16,7 @@ dist/
 .idea/
 *.swp
 *.swo
+WARP.md
 
 # Data files
 data/raw/*
@@ -33,6 +34,8 @@ fastf1_cache/
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.example
 
 # Docker
 .dockerignore
